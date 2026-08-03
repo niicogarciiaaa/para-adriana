@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz cumpleaños</title>
+    <meta name="description" content="Una página para felicitar un cumpleaños." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="confeti" aria-hidden="true"></canvas>
+
+    <!-- Portada: hay que pulsar el botón para entrar -->
+    <div class="portada" id="portada">
+      <div class="portada__contenido">
+        <div class="regalo" id="regalo" aria-hidden="true">
+          <div class="regalo__tapa"></div>
+          <div class="regalo__caja"></div>
+          <div class="regalo__lazo"></div>
+        </div>
+        <p class="portada__aviso">Tienes un regalo esperando</p>
+        <button class="boton" id="btn-abrir" type="button">Ábreme</button>
+      </div>
+    </div>
+
+    <main class="pagina" id="pagina" hidden>
+      <!-- Cabecera -->
+      <header class="hero">
+        <div class="globos" aria-hidden="true"></div>
+        <p class="hero__saludo">Feliz cumpleaños,</p>
+        <h1 class="hero__nombre" id="nombre"></h1>
+        <p class="hero__edad" id="edad" hidden></p>
+        <p class="hero__subtitulo" id="subtitulo"></p>
+        <div class="scroll-cue" aria-hidden="true">
+          <span></span>
+        </div>
+      </header>
+
+      <!-- Mensajes -->
+      <section class="seccion seccion--mensajes" id="seccion-mensajes" hidden>
+        <h2 class="seccion__titulo">Tres cosas</h2>
+        <div class="tarjetas" id="tarjetas"></div>
+      </section>
+
+      <!-- Fotos -->
+      <section class="seccion seccion--fotos" id="seccion-fotos" hidden>
+        <h2 class="seccion__titulo">Recuerdos</h2>
+        <div class="galeria" id="galeria"></div>
+      </section>
+
+      <!-- Carta final -->
+      <section class="seccion seccion--carta">
+        <div class="carta">
+          <h2 class="carta__titulo" id="carta-titulo"></h2>
+          <div class="carta__cuerpo" id="carta-cuerpo"></div>
+          <p class="carta__firma" id="carta-firma" hidden></p>
+          <button class="boton boton--sutil" id="btn-confeti" type="button">
+            Más confeti
+          </button>
+        </div>
+      </section>
+
+      <footer class="pie">
+        <p>Hecho con cariño</p>
+      </footer>
+    </main>
+
+    <!-- Control de música (solo aparece si CONFIG.musica tiene una ruta) -->
+    <button class="musica" id="btn-musica" type="button" hidden aria-pressed="false">
+      <span class="musica__icono" aria-hidden="true">♪</span>
+      <span class="musica__texto">Música</span>
+    </button>
+    <audio id="audio" loop preload="none"></audio>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

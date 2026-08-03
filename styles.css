@@ -1,0 +1,615 @@
+/* ---------------------------------------------------------
+   Base
+--------------------------------------------------------- */
+:root {
+  --fondo: #120d1c;
+  --fondo-alto: #1d1430;
+  --texto: #f4eefb;
+  --texto-suave: #b9aecb;
+  --acento: #ffb4c6;
+  --acento-calido: #ffd9a0;
+  --dorado: #f6c76b;
+  --borde: rgba(255, 255, 255, 0.12);
+  --cristal: rgba(255, 255, 255, 0.05);
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--texto);
+  background:
+    radial-gradient(1200px 600px at 20% -10%, #35234f 0%, transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, #4a2340 0%, transparent 55%),
+    linear-gradient(180deg, var(--fondo) 0%, var(--fondo-alto) 55%, #241634 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Estrellas de fondo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.2px 1.2px at 78% 12%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.6px 1.6px at 35% 62%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1.1px 1.1px at 88% 48%, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.3px 1.3px at 55% 28%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 22% 82%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 68% 76%, rgba(255, 255, 255, 0.5), transparent);
+  animation: parpadeo 6s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes parpadeo {
+  from { opacity: 0.45; }
+  to   { opacity: 1; }
+}
+
+#confeti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* ---------------------------------------------------------
+   Botones
+--------------------------------------------------------- */
+.boton {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #2a1730;
+  background: linear-gradient(135deg, var(--acento-calido), var(--acento));
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 2.6rem;
+  cursor: pointer;
+  box-shadow: 0 12px 34px rgba(255, 180, 198, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(255, 180, 198, 0.4);
+}
+
+.boton:active {
+  transform: translateY(0);
+}
+
+.boton--sutil {
+  background: transparent;
+  color: var(--acento);
+  border: 1px solid var(--borde);
+  box-shadow: none;
+  padding: 0.7rem 1.9rem;
+  font-size: 0.9rem;
+}
+
+.boton--sutil:hover,
+.boton--sutil:focus-visible {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 1px rgba(255, 180, 198, 0.2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--acento-calido);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   Portada
+--------------------------------------------------------- */
+.portada {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #120d1c 0%, #221636 100%);
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.portada--fuera {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portada__contenido {
+  text-align: center;
+  padding: 2rem;
+}
+
+.portada__aviso {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 3.5vw, 1.6rem);
+  color: var(--texto-suave);
+  margin: 2.5rem 0 1.75rem;
+}
+
+/* Regalo */
+.regalo {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  animation: flotar 3.2s ease-in-out infinite;
+}
+
+.regalo__caja {
+  position: absolute;
+  bottom: 0;
+  width: 130px;
+  height: 96px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #ff9db5, #d0567c);
+  box-shadow: 0 24px 60px rgba(208, 86, 124, 0.35);
+}
+
+.regalo__tapa {
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  width: 146px;
+  height: 30px;
+  border-radius: 6px;
+  background: linear-gradient(160deg, #ffc0d0, #e0698e);
+  transform-origin: left bottom;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+}
+
+.regalo__lazo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 130px;
+  background: linear-gradient(180deg, var(--dorado), #e0a33f);
+  z-index: 1;
+}
+
+.regalo--abierto .regalo__tapa {
+  transform: rotate(-118deg) translateY(-16px);
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* ---------------------------------------------------------
+   Hero
+--------------------------------------------------------- */
+.pagina {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+}
+
+/* El texto va por encima de los globos */
+.hero > *:not(.globos):not(.scroll-cue) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__saludo {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--texto-suave);
+  letter-spacing: 0.04em;
+}
+
+.hero__nombre {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(3.4rem, 15vw, 9rem);
+  line-height: 1;
+  margin: 0.2em 0 0.15em;
+  color: transparent;
+}
+
+/* Cada letra entra por separado (las anima script.js).
+   El degradado va en cada letra, no en el h1: al transformarlas crean su propia
+   capa y dejarían de recibir el recorte de texto del padre. script.js ajusta
+   background-size/position para que el degradado quede continuo. */
+.hero__nombre .letra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(28px) rotate(6deg);
+  animation: entrar-letra 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  background-image: linear-gradient(120deg, #fff3f7 10%, var(--acento) 45%, var(--dorado) 90%);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero__nombre .letra--espacio {
+  width: 0.32em;
+}
+
+@keyframes entrar-letra {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.hero__edad {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--dorado);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.hero__subtitulo {
+  max-width: 32ch;
+  font-size: clamp(0.98rem, 2.4vw, 1.15rem);
+  color: var(--texto-suave);
+  line-height: 1.7;
+}
+
+/* Globos */
+.globos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.globo {
+  position: absolute;
+  bottom: -180px;
+  width: 44px;
+  height: 56px;
+  border-radius: 50% 50% 48% 48%;
+  opacity: 0.5;
+  filter: blur(0.4px);
+  animation: subir linear infinite;
+}
+
+.globo::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@keyframes subir {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  12%  { opacity: 0.5; }
+  88%  { opacity: 0.4; }
+  100% { transform: translateY(-118vh) translateX(40px); opacity: 0; }
+}
+
+.scroll-cue {
+  position: absolute;
+  z-index: 1;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+}
+
+.scroll-cue span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 3px;
+  height: 7px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--acento);
+  animation: bajar 1.8s ease-in-out infinite;
+}
+
+@keyframes bajar {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  40%      { opacity: 1; }
+  80%      { transform: translateY(16px); opacity: 0; }
+}
+
+/* ---------------------------------------------------------
+   Secciones
+--------------------------------------------------------- */
+.seccion {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.seccion__titulo {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 6vw, 3rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.seccion__nota {
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+  letter-spacing: 0.06em;
+  margin-bottom: 3rem;
+}
+
+/* Aparición al hacer scroll */
+.revelar {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revelar--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------
+   Tarjetas de mensajes
+--------------------------------------------------------- */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tarjeta {
+  padding: 2.4rem 1.8rem;
+  text-align: left;
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  background: var(--cristal);
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 180, 198, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tarjeta__numero {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: rgba(246, 199, 107, 0.5);
+  margin-bottom: 0.8rem;
+}
+
+.tarjeta__titulo {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  color: var(--acento);
+}
+
+.tarjeta__texto {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--texto-suave);
+}
+
+/* ---------------------------------------------------------
+   Galería
+--------------------------------------------------------- */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.foto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--borde);
+  aspect-ratio: 3 / 4;
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.foto:hover img {
+  transform: scale(1.06);
+}
+
+.foto__pie {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2.5rem 1rem 0.9rem;
+  font-size: 0.9rem;
+  text-align: left;
+  background: linear-gradient(180deg, transparent, rgba(18, 13, 28, 0.9));
+}
+
+/* ---------------------------------------------------------
+   Carta final
+--------------------------------------------------------- */
+.seccion--carta {
+  padding-bottom: 3rem;
+}
+
+.carta {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 3.5rem 2.2rem;
+  border: 1px solid var(--borde);
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(14px);
+}
+
+.carta__titulo {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  margin-bottom: 1.4rem;
+}
+
+.carta__cuerpo {
+  text-align: left;
+}
+
+.carta__parrafo {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--texto-suave);
+}
+
+.carta__parrafo + .carta__parrafo {
+  margin-top: 1.4rem;
+}
+
+/* Capitular en el primer párrafo */
+.carta__parrafo:first-child::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-size: 3.4rem;
+  line-height: 0.82;
+  padding: 0.1em 0.12em 0 0;
+  color: var(--acento);
+}
+
+.carta__firma {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--acento);
+  margin-top: 2rem;
+}
+
+.carta #btn-confeti {
+  margin-top: 2.4rem;
+}
+
+.pie {
+  padding: 2rem 1.5rem 3.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(185, 174, 203, 0.5);
+}
+
+/* ---------------------------------------------------------
+   Música
+--------------------------------------------------------- */
+.musica {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  background: rgba(18, 13, 28, 0.75);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+/* display:flex ganaría al atributo hidden, así que lo forzamos */
+.musica[hidden] {
+  display: none;
+}
+
+.musica[aria-pressed="true"] {
+  color: var(--acento);
+  border-color: rgba(255, 180, 198, 0.4);
+}
+
+.musica[aria-pressed="true"] .musica__icono {
+  animation: pulso 1.4s ease-in-out infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50%      { transform: scale(1.25); opacity: 1; }
+}
+
+/* ---------------------------------------------------------
+   Responsive y accesibilidad
+--------------------------------------------------------- */
+@media (max-width: 600px) {
+  .seccion { padding: 4.5rem 1.25rem; }
+  .carta   { padding: 2.5rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}
