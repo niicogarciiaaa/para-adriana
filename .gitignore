@@ -10,9 +10,11 @@
 # Logs
 *.log
 
-# Música y vídeo: fuera del repo a propósito.
-# Subir una canción con derechos a un repo público es distribuirla.
+# Música y vídeo fuera del repo por defecto...
 *.mp3
 *.mp4
 *.m4a
 *.wav
+
+# ...menos la canción de la página, que tiene que sonar también online.
+!videoplayback.mp4

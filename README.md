@@ -87,5 +87,5 @@ Lo único que hay que hacer una vez, tras crear el repo en GitHub:
 
 La página queda en `https://<usuario>.github.io/<repo>/`.
 
-Recuerda que la música está en `.gitignore`, así que la versión publicada sale sin
-canción. Para que suene online, usa `musica.spotify` con el enlace de Spotify.
+La canción (`videoplayback.mp4`) sí va dentro del repo, para que suene también en
+la versión publicada.
