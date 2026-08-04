@@ -77,6 +77,15 @@ Y abrir <http://localhost:8000>.
 
 ## Publicarla en internet (GitHub Pages)
 
-1. Sube el repo a GitHub.
-2. En **Settings → Pages**, elige la rama `main` y la carpeta `/ (root)`.
-3. En un par de minutos estará en `https://<usuario>.github.io/<repo>/`.
+El repo trae el despliegue automático en `.github/workflows/deploy.yml`: cada vez
+que subes algo a `main`, la página se publica sola.
+
+Lo único que hay que hacer una vez, tras crear el repo en GitHub:
+
+1. **Settings → Pages → Source**: elegir **GitHub Actions**.
+2. Esperar a que termine el workflow (pestaña **Actions**).
+
+La página queda en `https://<usuario>.github.io/<repo>/`.
+
+Recuerda que la música está en `.gitignore`, así que la versión publicada sale sin
+canción. Para que suene online, usa `musica.spotify` con el enlace de Spotify.
