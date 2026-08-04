@@ -77,15 +77,13 @@ Y abrir <http://localhost:8000>.
 
 ## Publicarla en internet (GitHub Pages)
 
-El repo trae el despliegue automático en `.github/workflows/deploy.yml`: cada vez
-que subes algo a `main`, la página se publica sola.
+Son archivos estáticos, así que GitHub los sirve tal cual. Una sola vez:
 
-Lo único que hay que hacer una vez, tras crear el repo en GitHub:
+1. **Settings → Pages → Source**: elegir **Deploy from a branch**.
+2. Rama **main**, carpeta **/ (root)**. Guardar.
 
-1. **Settings → Pages → Source**: elegir **GitHub Actions**.
-2. Esperar a que termine el workflow (pestaña **Actions**).
-
-La página queda en `https://<usuario>.github.io/<repo>/`.
+En un par de minutos la página queda en `https://<usuario>.github.io/<repo>/`, y
+a partir de ahí cada `git push` la actualiza sola.
 
 La canción (`videoplayback.mp4`) sí va dentro del repo, para que suene también en
 la versión publicada.
