@@ -1,9 +1,10 @@
 # macOS
 .DS_Store
 
-# Editores
+# Editores y herramientas locales
 .vscode/
 .idea/
+.claude/
 *.swp
 
 # Logs
