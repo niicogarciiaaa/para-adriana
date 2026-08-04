@@ -48,7 +48,7 @@ const CONFIG = {
     //    que coincidir exactamente con el del archivo.
     //    Si el archivo no está, el botón no aparece: no rompe nada.
     archivo: "videoplayback.mp4",
-    titulo: "Make You Feel My Love",
+    titulo: "Someone Like You",
 
     // 2) El reproductor oficial de Spotify, al final de la carta.
     //    Pega aquí el enlace de la canción (Compartir → Copiar enlace).
