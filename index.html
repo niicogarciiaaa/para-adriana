@@ -60,9 +60,7 @@
           <h2 class="carta__titulo" id="carta-titulo"></h2>
           <div class="carta__cuerpo" id="carta-cuerpo"></div>
           <p class="carta__firma" id="carta-firma" hidden></p>
-          <button class="boton boton--sutil" id="btn-confeti" type="button">
-            Más confeti
-          </button>
+          <div class="spotify" id="spotify" hidden></div>
         </div>
       </section>
 
@@ -74,9 +72,9 @@
     <!-- Control de música (solo aparece si CONFIG.musica tiene una ruta) -->
     <button class="musica" id="btn-musica" type="button" hidden aria-pressed="false">
       <span class="musica__icono" aria-hidden="true">♪</span>
-      <span class="musica__texto">Música</span>
+      <span class="musica__texto" id="musica-texto">Música</span>
     </button>
-    <audio id="audio" loop preload="none"></audio>
+    <audio id="audio" loop preload="metadata"></audio>
 
     <script src="config.js"></script>
     <script src="script.js"></script>

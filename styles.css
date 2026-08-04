@@ -534,8 +534,15 @@ body::before {
   margin-top: 2rem;
 }
 
-.carta #btn-confeti {
-  margin-top: 2.4rem;
+.spotify {
+  margin-top: 2.6rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.spotify iframe {
+  display: block;
+  border: 0;
 }
 
 .pie {

@@ -41,8 +41,18 @@ const CONFIG = {
     firma: null,
   },
 
-  // Música de fondo (opcional).
-  // Guarda un mp3 en assets/ y pon aquí su ruta, por ejemplo "assets/cancion.mp3".
-  // Déjalo en null para no mostrar el botón de música.
-  musica: null,
+  // Música. Hay dos formas de ponerla, puedes usar una, la otra o ninguna.
+  musica: {
+    // 1) Un archivo tuyo, en la carpeta del proyecto. Sonará solo al abrir la
+    //    página, con un botón abajo a la derecha para pararla. El nombre tiene
+    //    que coincidir exactamente con el del archivo.
+    //    Si el archivo no está, el botón no aparece: no rompe nada.
+    archivo: "videoplayback.mp4",
+    titulo: "Make You Feel My Love",
+
+    // 2) El reproductor oficial de Spotify, al final de la carta.
+    //    Pega aquí el enlace de la canción (Compartir → Copiar enlace).
+    //    Ejemplo: "https://open.spotify.com/track/XXXXXXXXXXXXXXXXXXXXXX"
+    spotify: null,
+  },
 };

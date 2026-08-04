@@ -35,24 +35,34 @@ fotos: [
 ],
 ```
 
-### Añadir música
+### La música
 
-Guarda el archivo en `assets/` y apunta a él:
+Hay dos formas, en `musica`:
+
+**Un archivo propio** (`musica.archivo`). Se deja en la carpeta del proyecto y se
+pone su nombre exacto. Al abrir la página intenta sonar sola; si el navegador lo
+bloquea, el botón de abajo a la derecha la activa. Si el archivo no está, el botón
+no aparece y no pasa nada más. Vale `.mp3`, `.m4a` y también `.mp4` (se usa solo
+su pista de audio).
+
+Los archivos de audio y vídeo están en `.gitignore` a propósito: subir una canción
+con derechos a un repo público sería distribuirla.
+
+**El reproductor de Spotify** (`musica.spotify`). Se pega el enlace de la canción
+(Compartir → Copiar enlace) y aparece el reproductor oficial al final de la carta:
 
 ```js
-musica: "assets/cancion.mp3",
+spotify: "https://open.spotify.com/track/XXXXXXXXXXXXXXXXXXXXXX",
 ```
 
-Al abrir la página intentará sonar sola; si el navegador lo bloquea, el botón de
-abajo a la derecha la activa.
+Esta es la opción buena si vas a publicar la página en internet.
 
 ## Qué tiene
 
 - Portada con un regalo que se abre y confeti
 - Nombre animado letra a letra, globos subiendo y cielo estrellado
 - La carta, párrafo a párrafo, apareciendo al hacer scroll
-- Tarjetas de mensajes y galería de fotos (opcionales)
-- Botón de más confeti al final
+- Tarjetas de mensajes, galería de fotos y música (opcionales)
 - Adaptada a móvil y respeta `prefers-reduced-motion`
 
 ## Verla en el navegador

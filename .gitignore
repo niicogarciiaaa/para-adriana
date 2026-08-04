@@ -8,3 +8,10 @@
 
 # Logs
 *.log
+
+# Música y vídeo: fuera del repo a propósito.
+# Subir una canción con derechos a un repo público es distribuirla.
+*.mp3
+*.mp4
+*.m4a
+*.wav

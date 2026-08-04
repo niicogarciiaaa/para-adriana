@@ -254,14 +254,51 @@
   /* -------------------------------------------------------
      Música
   ------------------------------------------------------- */
+  /**
+   * Saca el id de una URL de Spotify. Acepta el enlace tal cual lo copia la app,
+   * con o sin los parámetros de detrás (?si=...).
+   */
+  function idDeSpotify(url) {
+    const encontrado = String(url).match(/track\/([A-Za-z0-9]+)/);
+    return encontrado ? encontrado[1] : null;
+  }
+
+  function activarSpotify() {
+    const enlace = CONFIG.musica && CONFIG.musica.spotify;
+    const id = enlace && idDeSpotify(enlace);
+    if (!id) return;
+
+    const contenedor = $("spotify");
+    const marco = document.createElement("iframe");
+    marco.src = `https://open.spotify.com/embed/track/${id}`;
+    marco.title = "Reproductor de Spotify";
+    marco.width = "100%";
+    marco.height = "152";
+    marco.loading = "lazy";
+    marco.allow = "encrypted-media; clipboard-write; picture-in-picture";
+    contenedor.appendChild(marco);
+    contenedor.hidden = false;
+  }
+
   function activarMusica() {
-    if (!CONFIG.musica) return;
+    const archivo = CONFIG.musica && CONFIG.musica.archivo;
+    if (!archivo) return;
 
     const audio = $("audio");
     const boton = $("btn-musica");
-    audio.src = CONFIG.musica;
+    audio.src = archivo;
     audio.volume = 0.35;
     boton.hidden = false;
+
+    if (CONFIG.musica.titulo) {
+      $("musica-texto").textContent = CONFIG.musica.titulo;
+    }
+
+    // Si el mp3 todavía no está en assets/, mejor esconder el botón que
+    // dejar uno que no hace nada.
+    audio.addEventListener("error", () => {
+      boton.hidden = true;
+    });
 
     boton.addEventListener("click", () => {
       if (audio.paused) {
@@ -315,12 +352,8 @@
   pintarFotos();
   pintarCarta();
   activarRevelado();
+  activarSpotify();
   const audio = activarMusica();
 
   $("btn-abrir").addEventListener("click", () => abrir(audio));
-
-  $("btn-confeti").addEventListener("click", (evento) => {
-    const caja = evento.currentTarget.getBoundingClientRect();
-    confeti.estallido(caja.left + caja.width / 2, caja.top, 90);
-  });
 })();
