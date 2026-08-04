@@ -65,6 +65,16 @@ Esta es la opción buena si vas a publicar la página en internet.
 - Tarjetas de mensajes, galería de fotos y música (opcionales)
 - Adaptada a móvil y respeta `prefers-reduced-motion`
 
+## Visitas
+
+La página lleva un contador de [GoatCounter](https://www.goatcounter.com/) al
+final de `index.html`. No usa cookies ni identifica a nadie: solo cuenta visitas.
+
+Panel: <https://niicogarciia.goatcounter.com/>
+
+Las visitas desde `localhost` no se cuentan, así que probarla en local no ensucia
+las estadísticas.
+
 ## Verla en el navegador
 
 Doble clic en `index.html`, o con un servidor local:
